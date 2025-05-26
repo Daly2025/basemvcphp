@@ -1,0 +1,49 @@
+button {
+    margin-top: 5px;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu ul a {
+    list-style: none;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.menu ul a li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu ul a i {
+    display: block
+}
+
+.menu_header  {
+    display: flex;
+    list-style: none;
+}
+.menu_header li {
+    margin: 10px;
+}
+.nav-item div{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
