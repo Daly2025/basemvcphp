@@ -1,9 +1,11 @@
-<?php
-session_start();
-?>
 <div class="container mt-4">
     <div class="bg-white p-4 rounded shadow-sm">
-        <?php if (isset($_SESSION['user_id'])): ?>
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="alert alert-warning">
+                <i class="fa-solid fa-lock me-1"></i>
+                Para acceder al intercambio de semillas debes <a href="<?= base_url() ?>auth/login" class="btn btn-link p-0">iniciar sesión</a> o <a href="<?= base_url() ?>auth/register" class="btn btn-link p-0">crear una cuenta</a>.
+            </div>
+        <?php else: ?>
             <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i>Intercambia tus Semillas</h2>
             <p class="lead">Publica tus semillas para intercambiar con la comunidad de rehuerta.</p>
             <form method="post" action="<?= base_url() ?>seed-exchange" enctype="multipart/form-data" class="mb-4">
@@ -21,11 +23,6 @@ session_start();
                 </div>
                 <button type="submit" class="btn btn-huerta">Publicar intercambio</button>
             </form>
-        <?php else: ?>
-            <div class="alert alert-warning">
-                <i class="fa-solid fa-lock me-1"></i>
-                Para acceder al intercambio de semillas debes <a href="<?= base_url() ?>auth/login" class="btn btn-link p-0">iniciar sesión</a> o <a href="<?= base_url() ?>auth/register" class="btn btn-link p-0">crear una cuenta</a>.
-            </div>
         <?php endif; ?>
         <hr>
         <h3 class="mb-3">Intercambios publicados</h3>
