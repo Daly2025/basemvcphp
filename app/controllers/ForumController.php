@@ -9,7 +9,7 @@ class ForumController extends Controller {
         $db = Capsule::connection()->getPdo();
         $model = new ForumTopic($db);
         $topics = $model->getAll();
-        $this->view('forum/index', ['topics' => $topics]);
+        $this->view('index', ['topics' => $topics]);
     }
     public function create(...$params) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +33,6 @@ class ForumController extends Controller {
                 exit;
             }
         }
-        $this->view('forum/create');
+        $this->view('create');
     }
 }
