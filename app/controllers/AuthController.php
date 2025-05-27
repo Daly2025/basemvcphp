@@ -45,7 +45,11 @@ class AuthController extends Controller{
                 $user->last_name=$_POST["last_name"];
                 $user->password=password_hash($_POST["password"],PASSWORD_DEFAULT);
                 $user->save();
-                header("Location: ".base_url()."auth");
+                session_start();
+                $_SESSION["user_id"] = $user->user_id;
+                $_SESSION["username"] = $user->username;
+                $_SESSION["register_success"] = true;
+                header("Location: ".base_url()."admin");
             }
             exit();
         }

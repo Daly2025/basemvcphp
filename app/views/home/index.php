@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+            background: url('assets/img/huerta.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
             min-height: 100vh;
         }
         .hero {

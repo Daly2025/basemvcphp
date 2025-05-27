@@ -35,4 +35,33 @@ class ForumController extends Controller {
         }
         $this->view('create');
     }
+    public function view(...$params) {
+        $id = $params[0] ?? null;
+        if (!$id) {
+            header('Location: ' . base_url() . 'forum');
+            exit;
+        }
+        $db = Capsule::connection()->getPdo();
+        $topicModel = new ForumTopic($db);
+        $commentModel = new \formacom\models\ForumComment($db);
+        // Obtener el tema
+        $stmt = $db->prepare('SELECT * FROM forum_topic WHERE id = ?');
+        $stmt->execute([$id]);
+        $topic = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$topic) {
+            header('Location: ' . base_url() . 'forum');
+            exit;
+        }
+        $comments = $commentModel->getByTopic($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $author = $_POST['author'] ?? 'Anónimo';
+            $content = $_POST['content'] ?? '';
+            if ($content) {
+                $commentModel->create($id, $author, $content);
+                header('Location: ' . base_url() . 'forum/view/' . $id);
+                exit;
+            }
+        }
+        $this->view('view', compact('topic', 'comments'));
+    }
 }

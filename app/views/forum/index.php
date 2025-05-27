@@ -2,7 +2,14 @@
     <div class="bg-white p-4 rounded shadow-sm">
         <h2 class="mb-3 text-success"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</h2>
         <p class="lead">Comparte tus experiencias, dudas y fotos de tu huerta con la comunidad.</p>
-        <a href="<?= base_url() ?>forum/create" class="btn btn-huerta mb-3"><i class="fa-solid fa-plus me-2"></i>Crear nuevo tema</a>
+        <a href="<?= base_url() ?>forum/create" class="btn btn-huerta mb-3<?php if (!isset($_SESSION['user_id'])) echo ' disabled'; ?>">
+            <i class="fa-solid fa-plus me-2"></i>Crear nuevo tema
+        </a>
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="alert alert-warning p-2 mb-3">
+                <i class="fa-solid fa-lock me-1"></i> Debes iniciar sesión para crear un nuevo tema. Puedes ver y comentar en los temas existentes sin registrarte.
+            </div>
+        <?php endif; ?>
 
         <?php if (!empty($data['topics'])): ?>
             <div class="table-responsive">
@@ -14,6 +21,7 @@
                             <th>Imagen</th>
                             <th>Usuario</th>
                             <th>Fecha</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +36,9 @@
                                 </td>
                                 <td><span class="badge bg-success-subtle text-success-emphasis">#<?= htmlspecialchars($topic['user_id']) ?></span></td>
                                 <td><?= htmlspecialchars($topic['created_at']) ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?>forum/view/<?= $topic['id'] ?>" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-eye"></i> Ver y comentar</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
