@@ -48,7 +48,9 @@ class SeedExchangeController extends Controller {
             $content = $_POST['content'] ?? '';
             if ($content) {
                 $commentModel->create($id, $_SESSION['user_id'], $content);
-                header('Location: ' . base_url() . 'seed-exchange/verIntercambio/' . $id);
+                // Asegura que base_url() termina con una barra
+                $baseUrl = rtrim(base_url(), '/') . '/';
+                header('Location: ' . $baseUrl . 'seed-exchange/verIntercambio/' . $id);
                 exit;
             }
         }
