@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `seed_exchange` (
   `user_id` INT NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `description` TEXT NOT NULL,
+  `image` VARCHAR(255) NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );
@@ -27,4 +28,15 @@ CREATE TABLE IF NOT EXISTS `forum_comment` (
   `content` TEXT NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`topic_id`) REFERENCES `forum_topic`(`id`) ON DELETE CASCADE
+);
+
+-- Tabla para comentarios en intercambios de semillas
+CREATE TABLE IF NOT EXISTS `seed_exchange_comment` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `exchange_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `content` TEXT NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`exchange_id`) REFERENCES `seed_exchange`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );

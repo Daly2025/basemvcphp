@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . base_url() . 'auth/login');
+    exit;
+}
+?>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">

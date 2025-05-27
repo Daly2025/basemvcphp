@@ -2,7 +2,7 @@
     <div class="bg-white p-4 rounded shadow-sm">
         <h2 class="mb-3 text-success"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</h2>
         <p class="lead">Comparte tus experiencias, dudas y fotos de tu huerta con la comunidad.</p>
-        <a href="<?= base_url() ?>forum/create" class="btn btn-huerta mb-3<?php if (!isset($_SESSION['user_id'])) echo ' disabled'; ?>">
+        <a href="<?= isset($_SESSION['user_id']) ? base_url() . 'forum/create' : '#' ?>" class="btn btn-huerta mb-3<?php if (!isset($_SESSION['user_id'])) echo ' disabled'; ?>" tabindex="-1" aria-disabled="true">
             <i class="fa-solid fa-plus me-2"></i>Crear nuevo tema
         </a>
         <?php if (!isset($_SESSION['user_id'])): ?>
@@ -37,7 +37,7 @@
                                 <td><span class="badge bg-success-subtle text-success-emphasis">#<?= htmlspecialchars($topic['user_id']) ?></span></td>
                                 <td><?= htmlspecialchars($topic['created_at']) ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?>forum/view/<?= $topic['id'] ?>" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-eye"></i> Ver y comentar</a>
+                                    <a href="<?= base_url() ?>forum/verTema/<?= $topic['id'] ?>" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-eye"></i> Ver y comentar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
