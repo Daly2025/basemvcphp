@@ -4,7 +4,7 @@ use formacom\core\Controller;
 
 class HomeController extends Controller{
     public function index(...$params){
-        $this->view("home");
+        $this->view("index");
     }
     
     public function about(...$params){
