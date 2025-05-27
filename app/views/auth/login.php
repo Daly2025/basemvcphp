@@ -1,87 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="<?=base_url()?>assets/css/login.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Iniciar sesión - rehuerta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
+    <style>
+        body { background: linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%); min-height: 100vh; }
+        .auth-box { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-top: 3rem; padding: 2.5rem 2rem; max-width: 420px; }
+        .btn-huerta { background: #4caf50; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
+        .btn-huerta:hover { background: #388e3c; color: #fff; }
+    </style>
 </head>
 <body>
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-sm-6 col-lg-6 col-xl-5">
-        <img src="<?=base_url()?>assets/img/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-sm-4 col-lg-6 col-xl-4 offset-xl-1">
-        <form action="<?=base_url()?>auth/login" method="post">
-          <!-- Email input -->
-          <div data-mdb-input-init class="form-outline mb-4">
-            <input required name="username" type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Enter a username" />
-            <label class="form-label" for="form3Example3">Username</label>
-          </div>
-
-          <!-- Password input -->
-          <div data-mdb-input-init class="form-outline mb-3">
-            <input required name="password" type="password" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Enter password" />
-            <label class="form-label" for="form3Example4">Password</label>
-          </div>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="auth-box w-100">
+            <h2 class="mb-4 text-success text-center"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</h2>
+            <form action="<?= base_url() ?>auth/login" method="post">
+                <div class="mb-3">
+                    <label for="login-username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="login-username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="login-password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-huerta w-100">Entrar</button>
+            </form>
+            <div class="text-center mt-3">
+                <span>¿No tienes cuenta?</span>
+                <a href="<?= base_url() ?>auth/register" class="btn btn-link text-success fw-bold">Regístrate</a>
             </div>
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>
-
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button   type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="<?=base_url()?>auth/register"
-                class="link-danger">Register</a></p>
-                <p><?php 
-                if(isset($data[0])){echo $data[0];} 
-                ?></p>
-          </div>
-
-        </form>
-      </div>
+            <div class="d-flex justify-content-between mt-4">
+                <a href="javascript:history.back()" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Volver atrás
+                </a>
+                <a href="<?= base_url() ?>" class="btn btn-outline-success">
+                    <i class="fa-solid fa-house me-1"></i> Ir a inicio
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved.
-    </div>
-    <!-- Copyright -->
-
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </div>
-</section>
 </body>
 </html>

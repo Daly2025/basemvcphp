@@ -64,52 +64,7 @@
             <div>
                 <a href="<?= base_url() ?>seed-exchange" class="btn btn-huerta"><i class="fa-solid fa-seedling me-2"></i>Intercambio de semillas</a>
                 <a href="<?= base_url() ?>forum" class="btn btn-huerta"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</a>
-            </div>
-        </div>
-        <div class="row auth-section mt-5">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="mb-3"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</h2>
-                <form action="<?= base_url() ?>auth/login" method="post">
-                    <div class="mb-3">
-                        <label for="login-username" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="login-username" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="login-password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="login-password" name="password" required>
-                    </div>
-                    <button type="submit" class="btn btn-success">Entrar</button>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <h2 class="mb-3"><i class="fa-solid fa-user-plus me-2"></i>Registrarse</h2>
-                <form action="<?= base_url() ?>auth/register" method="post">
-                    <div class="mb-3">
-                        <label for="register-username" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="register-username" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="register-email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="register-email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="register-firstname" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="register-firstname" name="first_name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="register-lastname" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="register-lastname" name="last_name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="register-password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="register-password" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="register-confirm" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="register-confirm" name="confirm_password" required>
-                    </div>
-                    <button type="submit" class="btn btn-success">Registrarse</button>
-                </form>
+                <a href="<?= base_url() ?>auth/login" class="btn btn-huerta"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</a>
             </div>
         </div>
     </div>

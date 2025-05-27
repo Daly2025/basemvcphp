@@ -36,6 +36,15 @@
         <?php else: ?>
             <p class="text-muted">No hay temas publicados aún.</p>
         <?php endif; ?>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="javascript:history.back()" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left me-1"></i> Volver atrás
+            </a>
+            <a href="<?= base_url() ?>" class="btn btn-outline-success">
+                <i class="fa-solid fa-house me-1"></i> Ir a inicio
+            </a>
+        </div>
     </div>
 </div>
 <style>

@@ -24,6 +24,14 @@
                     </div>
                     <button type="submit" class="btn btn-huerta w-100"><i class="fa-solid fa-paper-plane me-2"></i>Publicar tema</button>
                 </form>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Volver atrás
+                    </a>
+                    <a href="<?= base_url() ?>" class="btn btn-outline-success">
+                        <i class="fa-solid fa-house me-1"></i> Ir a inicio
+                    </a>
+                </div>
             </div>
         </div>
     </div>
