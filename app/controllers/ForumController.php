@@ -35,19 +35,14 @@ class ForumController extends Controller {
         }
         $this->view('create');
     }
-    public function view(...$params) {
-        $id = $params[0] ?? null;
-        if (!$id) {
-            header('Location: ' . base_url() . 'forum');
-            exit;
-        }
-        $db = Capsule::connection()->getPdo();
-        $topicModel = new ForumTopic($db);
+    public function verTema($id) {
+        $db = \Illuminate\Database\Capsule\Manager::connection()->getPdo();
+        $topicModel = new \formacom\models\ForumTopic($db);
         $commentModel = new \formacom\models\ForumComment($db);
         // Obtener el tema
         $stmt = $db->prepare('SELECT * FROM forum_topic WHERE id = ?');
         $stmt->execute([$id]);
-        $topic = $stmt->fetch(PDO::FETCH_ASSOC);
+        $topic = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$topic) {
             header('Location: ' . base_url() . 'forum');
             exit;
@@ -58,10 +53,10 @@ class ForumController extends Controller {
             $content = $_POST['content'] ?? '';
             if ($content) {
                 $commentModel->create($id, $author, $content);
-                header('Location: ' . base_url() . 'forum/view/' . $id);
+                header('Location: ' . base_url() . 'forum/verTema/' . $id);
                 exit;
             }
         }
-        $this->view('view', compact('topic', 'comments'));
+        $this->view('view', ['topic' => $topic, 'comments' => $comments]);
     }
 }
