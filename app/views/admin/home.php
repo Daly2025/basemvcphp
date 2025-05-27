@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>rehuerta - Panel principal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -14,50 +14,35 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Admin Shop</h1>
-        <div class="menu">
-            <ul>
-                <a href="<?= base_url() ?>provider">
-                    <li>
-                        <div>
-                            <i class="fa-solid fa-3x fa-building"></i>
-                            <p>Providers</p>
-                        </div>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm rounded">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-success" href="<?= base_url() ?>">
+                <i class="fa-solid fa-seedling me-2"></i>rehuerta
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>seed-exchange"><i class="fa-solid fa-seedling me-1"></i>Intercambio de semillas</a>
                     </li>
-                </a>
-                <a href="<?= base_url() ?>customer">
-                    <li>
-                        <div>
-                            <i class="fa-solid fa-3x fa-circle-user"></i>
-                            <p>Customer</p>
-                        </div>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>forum"><i class="fa-solid fa-comments me-1"></i>Foro</a>
                     </li>
-                </a>
-                <a href="<?= base_url() ?>product">
-                    <li>
-                        <div>
-                            <i class="fa-solid fa-3x fa-shop"></i>
-                            <p>Products</p>
-                        </div>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>profile"><i class="fa-solid fa-user me-1"></i>Mi perfil</a>
                     </li>
-                </a>
-                <a href="<?= base_url() ?>sale">
-                    <li>
-                        <div>
-                        <i class="fa-brands fa-3x fa-salesforce"></i></i>
-                            <p>Sales</p>
-                        </div>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>logout"><i class="fa-solid fa-right-from-bracket me-1"></i>Salir</a>
                     </li>
-                </a>
-
-
-            </ul>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="container">
+        <h1>Bienvenido a rehuerta</h1>
+        <p class="lead">Tu comunidad de horticultura: comparte, aprende e intercambia semillas</p>
     </div>
 </body>
 

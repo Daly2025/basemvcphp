@@ -3,28 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido - BaseMVC</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <title>rehuerta - Comunidad de Horticultura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+            min-height: 100vh;
+        }
+        .hero {
+            background: rgba(255,255,255,0.85);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .iconos-huerta {
+            font-size: 2.5rem;
+            color: #4caf50;
+            margin: 0 1rem;
+        }
+        .btn-huerta {
+            background: #4caf50;
+            color: #fff;
+            border-radius: 30px;
+            padding: 0.75rem 2rem;
+            font-size: 1.2rem;
+            margin: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-huerta:hover {
+            background: #388e3c;
+        }
+        .auth-section {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin-top: 2rem;
+            padding: 2rem 1rem;
+        }
+        .auth-section h2 {
+            color: #388e3c;
+        }
+    </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <?php include app_path('views/partials/header.php') ?>
-
-    <main class="container-fluid flex-grow-1">
-        <div class="hero-section bg-primary text-white py-5">
-            <div class="container text-center">
-                <h1 class="display-4 mb-4">¡Bienvenido a BaseMVC!</h1>
-                <p class="lead mb-4">Un framework PHP moderno para tus proyectos web</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="/login" class="btn btn-light btn-lg px-4">Iniciar Sesión</a>
-                    <a href="/admin" class="btn btn-outline-light btn-lg px-4">Panel Admin</a>
-                </div>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="mb-4">
+                <i class="fa-solid fa-seedling iconos-huerta"></i>
+                <i class="fa-solid fa-carrot iconos-huerta"></i>
+                <i class="fa-solid fa-apple-whole iconos-huerta"></i>
+                <i class="fa-solid fa-tractor iconos-huerta"></i>
+                <i class="fa-solid fa-water iconos-huerta"></i>
+            </div>
+            <h1 class="display-4 fw-bold mb-3">Bienvenido a <span style="color:#388e3c">rehuerta</span></h1>
+            <p class="lead mb-4">La comunidad donde los amantes de la horticultura comparten, aprenden e intercambian semillas y experiencias.</p>
+            <div>
+                <a href="<?= base_url() ?>seed-exchange" class="btn btn-huerta"><i class="fa-solid fa-seedling me-2"></i>Intercambio de semillas</a>
+                <a href="<?= base_url() ?>forum" class="btn btn-huerta"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</a>
             </div>
         </div>
-    </main>
-
-    <?php include app_path('views/partials/footer.php') ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="row auth-section mt-5">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="mb-3"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</h2>
+                <form action="<?= base_url() ?>auth/login" method="post">
+                    <div class="mb-3">
+                        <label for="login-username" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="login-username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="login-password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Entrar</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-3"><i class="fa-solid fa-user-plus me-2"></i>Registrarse</h2>
+                <form action="<?= base_url() ?>auth/register" method="post">
+                    <div class="mb-3">
+                        <label for="register-username" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="register-username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="register-email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="register-email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="register-firstname" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="register-firstname" name="first_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="register-lastname" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="register-lastname" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="register-password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="register-password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="register-confirm" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control" id="register-confirm" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
