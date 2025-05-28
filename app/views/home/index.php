@@ -64,7 +64,7 @@
             <div>
                 <a href="<?= base_url() ?>seed-exchange" class="btn btn-huerta"><i class="fa-solid fa-seedling me-2"></i>Intercambio de semillas</a>
                 <a href="<?= base_url() ?>forum" class="btn btn-huerta"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</a>
-                <a href="<?= base_url() ?>auth/login" class="btn btn-huerta"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</a>
+                <a href="<?php echo base_url(); ?>gallery" class="btn btn-success btn-lg"><i class="fas fa-camera"></i> Galería de imágenes</a>
             </div>
         </div>
     </div>

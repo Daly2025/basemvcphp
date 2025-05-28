@@ -27,6 +27,7 @@
                             <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/logout">Cerrar sesión</a>
                         </li>
                     <?php else: ?>
+
                         <li class="nav-item">
                             <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/login">Iniciar sesión</a>
                         </li>
