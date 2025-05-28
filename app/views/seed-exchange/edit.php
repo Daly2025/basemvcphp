@@ -2,14 +2,19 @@
     <div class="bg-white p-4 rounded shadow-sm">
         <h2 class="mb-3 text-success"><i class="fa-solid fa-edit me-2"></i>Editar Intercambio de Semillas</h2>
         <p class="lead">Modifica tu publicación de intercambio de semillas.</p>
-        <form method="post" action="<?= base_url() ?>seed-exchange/edit/<?= $data['exchange']['id'] ?>" enctype="multipart/form-data" class="mb-4">
+        <?php if (isset($data['error'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= htmlspecialchars($data['error']) ?>
+            </div>
+        <?php endif; ?>
+        <form method="post" action="<?= base_url() ?>seed-exchange/edit/<?= $data['exchange']['id'] ?>" enctype="multipart/form-data" class="mb-4" autocomplete="off">
             <div class="mb-3">
                 <label for="title" class="form-label">Título</label>
-                <input type="text" class="form-control" id="title" name="title" value="<?= htmlspecialchars($data['exchange']['title']) ?>" required>
+                <input type="text" class="form-control" id="title" name="title" value="<?= htmlspecialchars($data['exchange']['title']) ?>" required autocomplete="off">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descripción</label>
-                <textarea class="form-control" id="description" name="description" rows="5" required><?= htmlspecialchars($data['exchange']['description']) ?></textarea>
+                <textarea class="form-control" id="description" name="description" rows="5" required autocomplete="off"><?= htmlspecialchars($data['exchange']['description']) ?></textarea>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Imagen (opcional)</label>
@@ -20,7 +25,10 @@
                     </div>
                 <?php endif; ?>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*">
-            </div>
+                <?php if (!empty($data['exchange']['image'])): ?>
+                    <input type="hidden" name="existing_image" value="<?= htmlspecialchars($data['exchange']['image']) ?>">
+                <?php endif; ?>
+            }
             <button type="submit" class="btn btn-huerta">Guardar Cambios</button>
             <a href="javascript:history.back()" class="btn btn-outline-secondary">Volver atrás</a>
         </form>

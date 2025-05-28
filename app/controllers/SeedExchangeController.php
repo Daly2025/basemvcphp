@@ -27,6 +27,11 @@ class SeedExchangeController extends Controller {
                 $targetFile = $uploadDir . $filename;
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                     $image = 'assets/img/' . $filename;
+                } else {
+                    $exchange['title'] = $title;
+                    $exchange['description'] = $description;
+                    $this->view('edit', ['exchange' => $exchange, 'error' => 'Error al subir la imagen.']);
+                    return;
                 }
             }
             if ($title && $description) {
@@ -48,6 +53,8 @@ class SeedExchangeController extends Controller {
         $db = Capsule::connection()->getPdo();
         $model = new SeedExchange($db);
         $exchange = $model->getById($id);
+        error_log('SeedExchangeController: edit method - ID: ' . $id);
+        error_log('SeedExchangeController: edit method - Exchange Data: ' . print_r($exchange, true));
 
         if (!$exchange || $exchange['user_id'] !== $_SESSION['user_id']) {
             header('Location: ' . base_url() . 'seed-exchange');
@@ -57,7 +64,7 @@ class SeedExchangeController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = $_POST['title'] ?? '';
             $description = $_POST['description'] ?? '';
-            $image = $exchange['image']; // Keep existing image by default
+            $image = $_POST['existing_image'] ?? $exchange['image']; // Keep existing image by default or use hidden field
 
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = __DIR__ . '/../../assets/img/';
@@ -65,16 +72,37 @@ class SeedExchangeController extends Controller {
                 $targetFile = $uploadDir . $filename;
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                     $image = 'assets/img/' . $filename;
+                } else {
+                    $exchange['title'] = $title;
+                    $exchange['description'] = $description;
+                    $this->view('edit', ['exchange' => $exchange, 'error' => 'Error al subir la imagen.']);
+                    return;
                 }
             }
 
             if ($title && $description) {
-                $model->update($id, $title, $description, $image);
-                header('Location: ' . base_url() . 'seed-exchange/verIntercambio/' . $id);
-                exit;
+                try {
+                    $model->update($id, $title, $description, $image);
+                    header('Location: ' . base_url() . 'seed-exchange/verIntercambio/' . $id);
+                    exit;
+                } catch (\Exception $e) {
+                    $exchange['title'] = $title;
+                    $exchange['description'] = $description;
+                    $this->view('edit', ['exchange' => $exchange, 'error' => 'Error al actualizar el intercambio: ' . $e->getMessage()]);
+                    return;
+                }
+            } else {
+                // If validation fails, reload the form with submitted data and an error message
+                $exchange['title'] = $title;
+                $exchange['description'] = $description;
+                $this->view('edit', ['exchange' => $exchange, 'error' => 'El título y la descripción son obligatorios.']);
+                return;
             }
         }
 
+        header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+        header('Cache-Control: post-check=0, pre-check=0', false);
+        header('Pragma: no-cache');
         $this->view('edit', ['exchange' => $exchange]);
     }
 
@@ -87,6 +115,8 @@ class SeedExchangeController extends Controller {
         $db = Capsule::connection()->getPdo();
         $model = new SeedExchange($db);
         $exchange = $model->getById($id);
+        error_log('SeedExchangeController: edit method - ID: ' . $id);
+        error_log('SeedExchangeController: edit method - Exchange Data: ' . print_r($exchange, true));
 
         if (!$exchange || $exchange['user_id'] !== $_SESSION['user_id']) {
             header('Location: ' . base_url() . 'seed-exchange');
@@ -102,9 +132,9 @@ class SeedExchangeController extends Controller {
         $db = Capsule::connection()->getPdo();
         $exchangeModel = new \formacom\models\SeedExchange($db);
         $commentModel = new \formacom\models\SeedExchangeComment($db);
-        $stmt = $db->prepare('SELECT * FROM seed_exchange WHERE id = ?');
-        $stmt->execute([$id]);
-        $exchange = $stmt->fetch(\PDO::FETCH_ASSOC) ?: [];
+        $exchange = $exchangeModel->getById($id);
+        error_log('SeedExchangeController: verIntercambio method - ID: ' . $id);
+        error_log('SeedExchangeController: verIntercambio method - Exchange Data: ' . print_r($exchange, true));
         if (empty($exchange)) {
             header('Location: ' . base_url() . 'seed-exchange');
             exit;
