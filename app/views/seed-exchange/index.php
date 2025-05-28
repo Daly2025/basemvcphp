@@ -55,6 +55,10 @@
                                     <a href="<?= base_url() ?>seed-exchange/verIntercambio/<?= $exchange['id'] ?>" class="btn btn-outline-success btn-sm">
                                         <i class="fa-solid fa-eye"></i> Ver y comentar
                                     </a>
+                                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $exchange['user_id']): ?>
+                                        <a href="<?= base_url() ?>seed-exchange/edit/<?= $exchange['id'] ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fa-solid fa-edit"></i> Editar</a>
+                                        <a href="<?= base_url() ?>seed-exchange/delete/<?= $exchange['id'] ?>" class="btn btn-outline-danger btn-sm mt-1" onclick="return confirm('¿Estás seguro de que quieres eliminar este intercambio?');"><i class="fa-solid fa-trash"></i> Eliminar</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

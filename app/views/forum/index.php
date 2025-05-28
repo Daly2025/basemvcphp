@@ -38,6 +38,10 @@
                                 <td><?= htmlspecialchars($topic['created_at']) ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>forum/verTema/<?= $topic['id'] ?>" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-eye"></i> Ver y comentar</a>
+                                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $topic['user_id']): ?>
+                                        <a href="<?= base_url() ?>forum/edit/<?= $topic['id'] ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fa-solid fa-edit"></i> Editar</a>
+                                        <a href="<?= base_url() ?>forum/delete/<?= $topic['id'] ?>" class="btn btn-outline-danger btn-sm mt-1" onclick="return confirm('¿Estás seguro de que quieres eliminar este tema?');"><i class="fa-solid fa-trash"></i> Eliminar</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

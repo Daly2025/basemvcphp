@@ -11,7 +11,7 @@ class SeedExchangeComment {
         $stmt = $this->db->prepare("
             SELECT 
                 c.*, 
-                COALESCE(u.username, c.author_name) as username 
+                u.username as username 
             FROM seed_exchange_comment c 
             LEFT JOIN user u ON c.user_id = u.user_id 
             WHERE exchange_id = ? 

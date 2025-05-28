@@ -40,6 +40,65 @@ class ForumController extends Controller {
         }
         $this->view('create');
     }
+
+    public function edit($id) {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+
+        $db = \Illuminate\Database\Capsule\Manager::connection()->getPdo();
+        $model = new \formacom\models\ForumTopic($db);
+        $topic = $model->getById($id);
+
+        if (!$topic || $topic['user_id'] !== $_SESSION['user_id']) {
+            header('Location: ' . base_url() . 'forum');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $content = $_POST['content'] ?? '';
+            $image = $topic['image']; // Keep existing image by default
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = __DIR__ . '/../../assets/img/';
+                $filename = uniqid() . '_' . basename($_FILES['image']['name']);
+                $targetFile = $uploadDir . $filename;
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                    $image = 'assets/img/' . $filename;
+                }
+            }
+
+            if ($title && $content) {
+                $model->update($id, $title, $content, $image);
+                header('Location: ' . base_url() . 'forum/verTema/' . $id);
+                exit;
+            }
+        }
+
+        $this->view('edit', ['topic' => $topic]);
+    }
+
+    public function delete($id) {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+
+        $db = \Illuminate\Database\Capsule\Manager::connection()->getPdo();
+        $model = new \formacom\models\ForumTopic($db);
+        $topic = $model->getById($id);
+
+        if (!$topic || $topic['user_id'] !== $_SESSION['user_id']) {
+            header('Location: ' . base_url() . 'forum');
+            exit;
+        }
+
+        $model->delete($id);
+        header('Location: ' . base_url() . 'forum');
+        exit;
+    }
     public function verTema($id) {
         $db = \Illuminate\Database\Capsule\Manager::connection()->getPdo();
         $topicModel = new \formacom\models\ForumTopic($db);

@@ -39,14 +39,73 @@ class SeedExchangeController extends Controller {
         $this->view('index', ['exchanges' => $exchanges]);
     }
 
+    public function edit($id) {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+
+        $db = Capsule::connection()->getPdo();
+        $model = new SeedExchange($db);
+        $exchange = $model->getById($id);
+
+        if (!$exchange || $exchange['user_id'] !== $_SESSION['user_id']) {
+            header('Location: ' . base_url() . 'seed-exchange');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $image = $exchange['image']; // Keep existing image by default
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = __DIR__ . '/../../assets/img/';
+                $filename = uniqid() . '_' . basename($_FILES['image']['name']);
+                $targetFile = $uploadDir . $filename;
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                    $image = 'assets/img/' . $filename;
+                }
+            }
+
+            if ($title && $description) {
+                $model->update($id, $title, $description, $image);
+                header('Location: ' . base_url() . 'seed-exchange/verIntercambio/' . $id);
+                exit;
+            }
+        }
+
+        $this->view('edit', ['exchange' => $exchange]);
+    }
+
+    public function delete($id) {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+
+        $db = Capsule::connection()->getPdo();
+        $model = new SeedExchange($db);
+        $exchange = $model->getById($id);
+
+        if (!$exchange || $exchange['user_id'] !== $_SESSION['user_id']) {
+            header('Location: ' . base_url() . 'seed-exchange');
+            exit;
+        }
+
+        $model->delete($id);
+        header('Location: ' . base_url() . 'seed-exchange');
+        exit;
+    }
+
     public function verIntercambio($id) {
         $db = Capsule::connection()->getPdo();
         $exchangeModel = new \formacom\models\SeedExchange($db);
         $commentModel = new \formacom\models\SeedExchangeComment($db);
         $stmt = $db->prepare('SELECT * FROM seed_exchange WHERE id = ?');
         $stmt->execute([$id]);
-        $exchange = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if (!$exchange) {
+        $exchange = $stmt->fetch(\PDO::FETCH_ASSOC) ?: [];
+        if (empty($exchange)) {
             header('Location: ' . base_url() . 'seed-exchange');
             exit;
         }

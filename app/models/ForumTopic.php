@@ -20,4 +20,14 @@ class ForumTopic {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function update($id, $title, $content, $image = null) {
+        $stmt = $this->db->prepare("UPDATE forum_topic SET title = ?, content = ?, image = ? WHERE id = ?");
+        return $stmt->execute([$title, $content, $image, $id]);
+    }
+
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM forum_topic WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
 }

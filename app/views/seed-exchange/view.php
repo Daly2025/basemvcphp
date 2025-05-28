@@ -1,14 +1,18 @@
 <div class="container mt-4">
     <div class="bg-white p-4 rounded shadow-sm">
-        <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i><?= htmlspecialchars($exchange['title']) ?></h2>
-        <p><?= nl2br(htmlspecialchars($exchange['description'])) ?></p>
-        <?php if (!empty($exchange['image'])): ?>
-            <img src="<?= base_url() . $exchange['image'] ?>" alt="Imagen del intercambio" class="img-fluid rounded mb-3" style="max-width:300px;">
+        <?php if (isset($exchange) && !empty($exchange)): ?>
+            <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i><?= htmlspecialchars($exchange['title']) ?></h2>
+            <p><?= nl2br(htmlspecialchars($exchange['description'])) ?></p>
+            <?php if (!empty($exchange['image'])): ?>
+                <img src="<?= base_url() . $exchange['image'] ?>" alt="Imagen del intercambio" class="img-fluid rounded mb-3" style="max-width:300px;">
+            <?php endif; ?>
+            <div class="mb-2 text-muted">Publicado el <?= htmlspecialchars($exchange['created_at']) ?> por usuario #<?= htmlspecialchars($exchange['user_id']) ?></div>
+        <?php else: ?>
+            <div class="alert alert-warning">No se encontró el intercambio de semillas.</div>
         <?php endif; ?>
-        <div class="mb-2 text-muted">Publicado el <?= htmlspecialchars($exchange['created_at']) ?> por usuario #<?= htmlspecialchars($exchange['user_id']) ?></div>
         <hr>
         <h4 class="text-success mb-3"><i class="fa-solid fa-comments me-2"></i>Comentarios</h4>
-        <?php if ($comments): ?>
+        <?php if (isset($comments) && $comments): ?>
             <?php foreach ($comments as $comment): ?>
                 <div class="border rounded p-2 mb-2 bg-light">
                     <div class="fw-bold text-success"><i class="fa-solid fa-user me-1"></i><?= htmlspecialchars($comment['username']) ?></div>

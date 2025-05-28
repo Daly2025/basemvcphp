@@ -16,6 +16,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="<?php echo base_url(); ?>">Inicio</a>
+                    </li>
                     <?php if (isset($_SESSION['username'])): ?>
                         <li class="nav-item">
                             <span class="nav-link text-light">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
