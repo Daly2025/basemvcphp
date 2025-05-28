@@ -55,5 +55,12 @@ class AuthController extends Controller{
     }
 
 
+    public function logout() {
+        session_unset();
+        session_destroy();
+        header('Location: ' . base_url());
+        exit();
+    }
+
 }
 ?>

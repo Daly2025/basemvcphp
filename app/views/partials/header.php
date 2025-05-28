@@ -14,5 +14,24 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <li class="nav-item">
+                            <span class="nav-link text-light">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/logout">Cerrar sesión</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/login">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/register">Registrarse</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
         </div>
     </nav>
