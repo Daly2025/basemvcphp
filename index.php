@@ -9,8 +9,7 @@ $app = new App();
 // Por ejemplo, si tienes un LoginController y RegisterController, los exentas:
 $app->addMiddleware(new SessionMiddleware([
     'formacom\controllers\AuthController',
-    'formacom\controllers\HomeController',
-    'formacom\controllers\SeedExchangeController' // Ahora exento
+    'formacom\controllers\HomeController'
 ]));
 $app->run();
 ?>
