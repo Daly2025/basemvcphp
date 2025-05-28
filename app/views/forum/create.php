@@ -1,16 +1,17 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ' . base_url() . 'auth/login');
-    exit;
-}
-?>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="bg-white p-4 rounded shadow-sm">
+                <?php if (isset($data['error'])): ?>
+                    <div class="alert alert-warning">
+                        <i class="fa-solid fa-lock me-1"></i>
+                        <?= $data['error'] ?>
+                        <div class="mt-2">
+                            <a href="<?= base_url() ?>auth/login" class="btn btn-success btn-sm me-2">Iniciar sesión</a>
+                            <a href="<?= base_url() ?>auth/register" class="btn btn-outline-success btn-sm">Registrarse</a>
+                        </div>
+                    </div>
+                <?php else: ?>
                 <h2 class="mb-4 text-success"><i class="fa-solid fa-seedling me-2"></i>Crear nuevo tema en el foro</h2>
                 <form method="post" action="<?= base_url() ?>forum/create" enctype="multipart/form-data">
                     <div class="mb-3">
@@ -41,6 +42,7 @@ if (!isset($_SESSION['user_id'])) {
                         <i class="fa-solid fa-house me-1"></i> Ir a inicio
                     </a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

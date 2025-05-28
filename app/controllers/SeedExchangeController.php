@@ -9,7 +9,14 @@ class SeedExchangeController extends Controller {
         $db = Capsule::connection()->getPdo();
         $model = new SeedExchange($db);
         // Procesar formulario si es POST
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!isset($_SESSION['user_id'])) {
+                $this->view('index', [
+                    'exchanges' => $model->getAll(),
+                    'error' => 'Debes iniciar sesión para publicar un intercambio de semillas.'
+                ]);
+                return;
+            }
             $user_id = $_SESSION['user_id'];
             $title = $_POST['title'] ?? '';
             $description = $_POST['description'] ?? '';
@@ -44,10 +51,12 @@ class SeedExchangeController extends Controller {
             exit;
         }
         $comments = $commentModel->getByExchange($id);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $content = $_POST['content'] ?? '';
             if ($content) {
-                $commentModel->create($id, $_SESSION['user_id'], $content);
+                $user_id = $_SESSION['user_id'] ?? null;
+                $author = isset($_SESSION['user_id']) ? null : ($_POST['author'] ?? 'Anónimo');
+                $commentModel->create($id, $user_id, $content, $author);
                 // Asegura que base_url() termina con una barra
                 $baseUrl = rtrim(base_url(), '/') . '/';
                 header('Location: ' . $baseUrl . 'seed-exchange/verIntercambio/' . $id);

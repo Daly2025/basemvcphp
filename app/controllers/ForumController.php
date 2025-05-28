@@ -12,10 +12,15 @@ class ForumController extends Controller {
         $this->view('index', ['topics' => $topics]);
     }
     public function create(...$params) {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $db = Capsule::connection()->getPdo();
             $model = new ForumTopic($db);
-            $user_id = $_SESSION['user_id'] ?? null;
+            $user_id = $_SESSION['user_id'];
             $title = $_POST['title'] ?? '';
             $content = $_POST['content'] ?? '';
             $image = null;
@@ -27,7 +32,7 @@ class ForumController extends Controller {
                     $image = 'assets/img/' . $filename;
                 }
             }
-            if ($user_id && $title && $content) {
+            if ($title && $content) {
                 $model->create($user_id, $title, $content, $image);
                 header('Location: ' . base_url() . 'forum');
                 exit;

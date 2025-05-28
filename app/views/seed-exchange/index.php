@@ -1,9 +1,15 @@
 <div class="container mt-4">
     <div class="bg-white p-4 rounded shadow-sm">
+        <?php if (isset($data['error'])): ?>
+            <div class="alert alert-danger">
+                <i class="fa-solid fa-exclamation-triangle me-1"></i>
+                <?= $data['error'] ?>
+            </div>
+        <?php endif; ?>
         <?php if (!isset($_SESSION['user_id'])): ?>
             <div class="alert alert-warning">
                 <i class="fa-solid fa-lock me-1"></i>
-                Para acceder al intercambio de semillas debes <a href="<?= base_url() ?>auth/login" class="btn btn-link p-0">iniciar sesión</a> o <a href="<?= base_url() ?>auth/register" class="btn btn-link p-0">crear una cuenta</a>.
+                Para publicar un intercambio de semillas debes <a href="<?= base_url() ?>auth/login" class="btn btn-link p-0">iniciar sesión</a> o <a href="<?= base_url() ?>auth/register" class="btn btn-link p-0">crear una cuenta</a>.
             </div>
         <?php else: ?>
             <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i>Intercambia tus Semillas</h2>

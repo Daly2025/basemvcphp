@@ -20,18 +20,20 @@
             <p class="text-muted">Aún no hay comentarios. ¡Sé el primero en participar!</p>
         <?php endif; ?>
         <hr>
-        <?php if (isset($_SESSION['user_id'])): ?>
         <h5 class="mb-3">Deja tu comentario</h5>
         <form method="post">
+            <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="mb-2">
+                <label for="author" class="form-label">Tu nombre</label>
+                <input type="text" class="form-control" id="author" name="author" value="Anónimo" required>
+            </div>
+            <?php endif; ?>
             <div class="mb-2">
                 <label for="content" class="form-label">Comentario</label>
                 <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
             </div>
             <button type="submit" class="btn btn-huerta"><i class="fa-solid fa-paper-plane me-1"></i>Comentar</button>
         </form>
-        <?php else: ?>
-        <div class="alert alert-warning">Debes iniciar sesión para comentar.</div>
-        <?php endif; ?>
         <div class="d-flex justify-content-between mt-4">
             <a href="javascript:history.back()" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-arrow-left me-1"></i> Volver atrás

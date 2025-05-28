@@ -13,7 +13,6 @@ class AuthController extends Controller{
         if(isset($_POST["username"])){
             $user=User::where("username",$_POST["username"])->first();
             if($user && password_verify($_POST["password"],$user->password)){
-                session_start();
                 $_SESSION["user_id"]=$user->user_id;
                 $_SESSION["username"]=$user->username;
                 header("Location: ".base_url()."admin");
@@ -45,7 +44,6 @@ class AuthController extends Controller{
                 $user->last_name=$_POST["last_name"];
                 $user->password=password_hash($_POST["password"],PASSWORD_DEFAULT);
                 $user->save();
-                session_start();
                 $_SESSION["user_id"] = $user->user_id;
                 $_SESSION["username"] = $user->username;
                 $_SESSION["register_success"] = true;
