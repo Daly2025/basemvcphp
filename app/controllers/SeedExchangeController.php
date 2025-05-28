@@ -135,6 +135,7 @@ class SeedExchangeController extends Controller {
         $exchange = $exchangeModel->getById($id);
         error_log('SeedExchangeController: verIntercambio method - ID: ' . $id);
         error_log('SeedExchangeController: verIntercambio method - Exchange Data: ' . print_r($exchange, true));
+        error_log('SeedExchangeController: verIntercambio method - Is exchange empty? ' . (empty($exchange) ? 'Yes' : 'No'));
         if (empty($exchange)) {
             header('Location: ' . base_url() . 'seed-exchange');
             exit;
