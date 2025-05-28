@@ -11,7 +11,8 @@ abstract class Controller
         $parts = explode('\\', $controllerFullName);
         $className = end($parts);
         // Convertimos a minúsculas y removemos la palabra "Controller" para obtener el nombre de la carpeta
-        $controllerName = strtolower(str_replace("Controller", "", $className));
+        // Convertir SeedExchange a seed-exchange
+        $controllerName = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', str_replace("Controller", "", $className)));
         require_once './app/views/'.$controllerName.'/'. $view . '.php';
     }
 }

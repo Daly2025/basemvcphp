@@ -10,8 +10,10 @@ class App{
         $url=$this->parseUrl();
        
          // Verificar el controlador
-         if(file_exists('./app/controllers/' . ucfirst($url[0]) . 'Controller.php')) {
-            $this->controller = "formacom\\controllers\\".ucfirst($url[0]) . 'Controller';
+         // Convertir seed-exchange a SeedExchange
+         $controllerName = str_replace('-', '', ucwords($url[0], '-'));
+         if(file_exists('./app/controllers/' . $controllerName . 'Controller.php')) {
+            $this->controller = "formacom\\controllers\\".$controllerName . 'Controller';
             unset($url[0]);
         }else{
             //redireccionar a base url

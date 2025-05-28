@@ -29,7 +29,7 @@ class SeedExchangeController extends Controller {
             }
         }
         $exchanges = $model->getAll();
-        $this->view('seedexchange/index', ['exchanges' => $exchanges]);
+        $this->view('index', ['exchanges' => $exchanges]);
     }
 
     public function verIntercambio($id) {
@@ -54,6 +54,6 @@ class SeedExchangeController extends Controller {
                 exit;
             }
         }
-        $this->view('seedexchange/view', compact('exchange', 'comments'));
+        $this->view('view', compact('exchange', 'comments'));
     }
 }
