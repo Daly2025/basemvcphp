@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <style>
         body {
-            background: url('assets/img/huerta.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+            background: url('assets/img/logo.jpeg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
             min-height: 100vh;
         }
         .hero {
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.5);
             border-radius: 20px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.08);
             padding: 3rem 2rem;
@@ -59,13 +59,13 @@
                 <i class="fa-solid fa-tractor iconos-huerta"></i>
                 <i class="fa-solid fa-water iconos-huerta"></i>
             </div>
-            <h1 class="display-4 fw-bold mb-3">Bienvenido a <span style="color:#388e3c">rehuerta</span></h1>
-            <p class="lead mb-4">La comunidad donde los amantes de la horticultura comparten, aprenden e intercambian semillas y experiencias.</p>
             <div>
                 <a href="<?= base_url() ?>seed-exchange" class="btn btn-huerta"><i class="fa-solid fa-seedling me-2"></i>Intercambio de semillas</a>
                 <a href="<?= base_url() ?>forum" class="btn btn-huerta"><i class="fa-solid fa-comments me-2"></i>Foro de la huerta</a>
                 <a href="<?php echo base_url(); ?>gallery" class="btn btn-success btn-lg"><i class="fas fa-camera"></i> Galería de imágenes</a>
             </div>
+            <h1 class="display-4 fw-bold mb-3">Bienvenido a <span style="color:#388e3c">rehuerta</span></h1>
+            <p class="lead mb-4">La comunidad donde los amantes de la horticultura comparten, aprenden e intercambian semillas y experiencias.</p>
         </div>
     </div>
 </body>
