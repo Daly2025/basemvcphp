@@ -12,23 +12,11 @@
                 Para publicar un intercambio de semillas debes <a href="<?= base_url() ?>auth/login" class="btn btn-link p-0">iniciar sesión</a> o <a href="<?= base_url() ?>auth/register" class="btn btn-link p-0">crear una cuenta</a>.
             </div>
         <?php else: ?>
-            <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i>Intercambia tus Semillas</h2>
-            <p class="lead">Publica tus semillas para intercambiar con la comunidad de rehuerta.</p>
-            <form method="post" action="<?= base_url() ?>seed-exchange" enctype="multipart/form-data" class="mb-4">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Título</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Imagen (opcional)</label>
-                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-huerta">Publicar intercambio</button>
-            </form>
+            <div class="mb-4">
+                <a href="<?= base_url() ?>seed-exchange/create" class="btn btn-huerta">
+                    <i class="fa-solid fa-plus me-2"></i>Publicar nuevo intercambio
+                </a>
+            </div>
         <?php endif; ?>
         <hr>
         <h3 class="mb-3">Intercambios publicados</h3>

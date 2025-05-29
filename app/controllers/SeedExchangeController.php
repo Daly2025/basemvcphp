@@ -44,6 +44,14 @@ class SeedExchangeController extends Controller {
         $this->view('index', ['exchanges' => $exchanges]);
     }
 
+    public function create() {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . base_url() . 'auth/login');
+            exit;
+        }
+        $this->view('create');
+    }
+
     public function edit($id) {
         if (!isset($_SESSION['user_id'])) {
             header('Location: ' . base_url() . 'auth/login');
