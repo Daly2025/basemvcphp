@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <style>
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('assets/img/logopeq.jpeg.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('assets/img/logopeq.jpeg.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
             min-height: 100vh;
         }
         .hero {
