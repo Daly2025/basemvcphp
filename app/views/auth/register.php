@@ -8,8 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <style>
-        body { background: linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%); min-height: 100vh; }
-        .auth-box { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-top: 3rem; padding: 2.5rem 2rem; max-width: 480px; }
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), 
+                        url('<?= base_url() ?>assets/img/logopeq.jpeg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        .auth-box {
+            margin: 2% 5% 0 auto;
+            padding: 30px;
+            max-width: 500px;
+            transform: translate(4cm, -4cm);
+        }
         .btn-huerta { background: #4caf50; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
         .btn-huerta:hover { background: #388e3c; color: #fff; }
     </style>
