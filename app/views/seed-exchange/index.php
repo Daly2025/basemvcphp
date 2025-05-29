@@ -79,6 +79,12 @@
     </div>
 </div>
 <style>
+body {
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('assets/img/logopeq.jpeg.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+    min-height: 100vh;
+}
+</style>
+<style>
 .btn-huerta {
     background: #4caf50;
     color: #fff;

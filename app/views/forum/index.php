@@ -62,8 +62,6 @@
         </div>
     </div>
 </div>
-<img src="<?php echo base_url(); ?>assets/img/logo.jpeg" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; max-width: 100px;">
-</div>
 <style>
 .btn-huerta {
     background: #4caf50;
