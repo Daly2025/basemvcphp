@@ -1,5 +1,5 @@
-<div class="container mt-4">
-    <div class="bg-white p-4 rounded shadow-sm">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="bg-white p-4 rounded shadow-lg" style="max-width: 600px; width: 100%;">
         <h2 class="mb-3 text-success"><i class="fa-solid fa-seedling me-2"></i>Publicar Nuevo Intercambio</h2>
         <p class="lead">Completa el formulario para ofrecer tus semillas a la comunidad.</p>
         <form method="post" action="<?= base_url() ?>seed-exchange" enctype="multipart/form-data" class="mb-4">
@@ -29,7 +29,7 @@
 </div>
 <style>
 body {
-    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('assets/img/logopeq.jpeg.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
+    background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('assets/img/logopeq.jpeg.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #e0ffe0 0%, #b2f7b8 100%);
     min-height: 100vh;
 }
 .btn-huerta {
