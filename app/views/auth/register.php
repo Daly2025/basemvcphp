@@ -15,19 +15,21 @@
             min-height: 100vh;
         }
         .auth-box {
-            margin: 2% 5% 0 auto;
-            padding: 30px;
-            max-width: 500px;
-            transform: translate(4cm, -4cm);
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            max-width: 400px;
         }
-        .btn-huerta { background: #4caf50; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
+        .btn-huerta { background: #8BC34A; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
         .btn-huerta:hover { background: #388e3c; color: #fff; }
     </style>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="auth-box w-100">
-            <h2 class="mb-4 text-success text-center"><i class="fa-solid fa-user-plus me-2"></i>Registro</h2>
+            <h2 class="mb-4 text-success text-center"></h2>
             <form action="<?= base_url() ?>auth/register" method="post">
                 <div class="mb-3">
                     <label for="register-username" class="form-label">Usuario</label>
