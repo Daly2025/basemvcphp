@@ -17,10 +17,10 @@
         .auth-box {
             position: absolute;
             right: 10%;
-            top: 50%;
+            top: 40%;
             transform: translateY(-50%);
             padding: 20px;
-            max-width: 400px;
+            max-width: 350px;
         }
         .btn-huerta { background: #8BC34A; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
         .btn-huerta:hover { background: #388e3c; color: #fff; }
