@@ -31,51 +31,11 @@
             <form action="<?= base_url() ?>auth/login" method="post">
                 <div class="mb-3">
                     <label for="login-username" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="login-username" name="username" required>
+                    <input type="text" class="form-control" id="login-username2" name="username" required>
                 </div>
                 <div class="mb-3">
                     <label for="login-password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="login-password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-huerta w-100">Entrar</button>
-            </form>
-            <div class="text-center mt-3">
-                <span>¿No tienes cuenta?</span>
-                <a href="<?= base_url() ?>auth/register" class="btn btn-link text-success fw-bold">Regístrate</a>
-            </div>
-            <div class="d-flex justify-content-between mt-4">
-                <a href="javascript:history.back()" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-arrow-left me-1"></i> Volver atrás
-                </a>
-                <a href="<?= base_url() ?>" class="btn btn-outline-success">
-                    <i class="fa-solid fa-house me-1"></i> Ir a inicio
-                </a>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-.auth-box {
-    margin: 2% 5% 0 auto;
-    padding: 30px;
-    max-width: 500px;
-}
-.btn-huerta { background: #4caf50; color: #fff; border-radius: 30px; padding: 0.75rem 2rem; font-size: 1.1rem; margin: 0.5rem 0; transition: background 0.2s; }
-.btn-huerta:hover { background: #388e3c; color: #fff; }
-</style>
-</head>
-<body>
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="auth-box w-100">
-            <h2 class="mb-4 text-success text-center"><i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión</h2>
-            <form action="<?= base_url() ?>auth/login" method="post">
-                <div class="mb-3">
-                    <label for="login-username" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="login-username" name="username" required>
-                </div>
-                <div class="mb-3">
-                    <label for="login-password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="login-password" name="password" required>
+                    <input type="password" class="form-control" id="login-password2" name="password" required>
                 </div>
                 <button type="submit" class="btn btn-huerta w-100">Entrar</button>
             </form>
