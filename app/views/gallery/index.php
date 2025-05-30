@@ -1,3 +1,5 @@
+<?php include 'app/views/partials/header.php'; ?>
+
 <div class="container">
     <h1>Galería de Imágenes</h1>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -44,7 +46,7 @@
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
 star e    .owl-carousel {
-            margin: 20px auto;
+            margin: 20px auto; /* Center the carousel */
             padding: 20px;
             background-color: #e8f5e9; /* Light green background */
             border-radius: 10px;
@@ -63,7 +65,6 @@ star e    .owl-carousel {
     </div>
 </div>
 <img src="<?php echo base_url(); ?>assets/img/logo.jpeg" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; max-width: 100px;">
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -88,3 +89,4 @@ star e    .owl-carousel {
         });
     });
 </script>
+<?php include 'app/views/partials/footer.php'; ?>
