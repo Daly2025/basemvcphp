@@ -1,6 +1,5 @@
 <?php
 require 'vendor/autoload.php';
-require 'config/config.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 

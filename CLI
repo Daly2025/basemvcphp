@@ -1,0 +1,7 @@
+# Clear PHP opcache
+php -r "opcache_reset();"
+
+# Restart XAMPP Apache through CLI
+net stop Apache
+net start Apache
+php -r 'opcache_reset();'
