@@ -17,9 +17,9 @@
 
 <body>
     <div class="container"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-3x fa-shop"></i>Shop</a>
+        <a class="navbar-brand text-white" href="#"><i class="fa-solid fa-3x fa-shop"></i>Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
                     <a href="<?= base_url() ?>provider">
                         <div>
                             <i class="fa-solid fa-3x fa-building"></i>
-                            <p>Providers</p>
+                            <p class="text-white">Providers</p>
                         </div>
                     </a>
                 </li>
@@ -38,7 +38,7 @@
                     <a href="<?= base_url() ?>customer">
                         <div>
                             <i class="fa-solid fa-3x fa-circle-user"></i>
-                            <p>Customer</p>
+                            <p class="text-white">Customer</p>
                         </div>
                     </a>
                 </li>
@@ -46,7 +46,7 @@
                     <a href="<?= base_url() ?>product">
                         <div>
                             <i class="fa-solid fa-3x fa-shop"></i>
-                            <p>Products</p>
+                            <p class="text-white">Products</p>
                         </div>
                     </a>
                 </li>
@@ -54,7 +54,7 @@
                     <a href="<?= base_url() ?>sale">
                         <div>
                             <i class="fa-brands fa-3x fa-salesforce"></i></i>
-                            <p>Sales</p>
+                            <p class="text-white">Sales</p>
                         </div>
                     </a>
                 </li>
