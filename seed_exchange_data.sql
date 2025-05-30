@@ -1,0 +1,2 @@
+INSERT INTO `seed_exchange` (`user_id`, `title`, `description`, `image`, `created_at`) VALUES
+(1, 'Tomates Cherry', 'Intercambio semillas de tomates cherry. Son muy dulces y fáciles de cultivar.', NULL, NOW());
