@@ -1,4 +1,5 @@
-<php include_once __DIR__ . '/../partials/header.php' ?>
+<?php include_once __DIR__ . '/../partials/header.php'; ?>
+
 <div class="container">
     <h1>Galería de Imágenes</h1>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">

@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-         
+            <a class="navbar-brand text-light" href="/">BaseMVC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,7 +27,6 @@
                             <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/logout">Cerrar sesión</a>
                         </li>
                     <?php else: ?>
-
                         <li class="nav-item">
                             <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/login">Iniciar sesión</a>
                         </li>
@@ -39,3 +38,6 @@
             </div>
         </div>
     </nav>
+    <!-- Agregar el script de Bootstrap al final del body -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
