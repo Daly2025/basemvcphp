@@ -47,11 +47,12 @@
         }
         .owl-carousel {
             margin: 20px auto; /* Centrar el carrusel */
-            padding: 20px;
+            padding: 10px; /* Reducir el padding para pantallas pequeñas */
             background-color: #e8f5e9; /* Fondo verde claro */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 900px; /* Ancho mayor para mostrar más imágenes */
+            max-width: 100%; /* Asegurar que el carrusel ocupe el 100% del ancho disponible */
+            box-sizing: border-box; /* Incluir padding y border en el ancho total */
         }
         /* Estilos para las flechas de navegación */
         .owl-nav button {
@@ -61,22 +62,23 @@
             background: rgba(255, 255, 255, 0.7) !important;
             border: none !important;
             font-size: 2em !important;
-            padding: 0 15px !important;
-            height: 50px;
-            line-height: 50px;
+            padding: 0 10px !important; /* Reducir padding de las flechas */
+            height: 40px; /* Reducir altura de las flechas */
+            line-height: 40px;
             color: #333 !important;
             border-radius: 50% !important;
             cursor: pointer;
             transition: background 0.3s ease;
+            z-index: 10; /* Asegurar que las flechas estén por encima de las imágenes */
         }
         .owl-nav button:hover {
             background: rgba(255, 255, 255, 0.9) !important;
         }
         .owl-nav .owl-prev {
-            left: -30px; /* Ajustar posición */
+            left: 5px; /* Ajustar posición para que estén dentro del carrusel */
         }
         .owl-nav .owl-next {
-            right: -30px; /* Ajustar posición */
+            right: 5px; /* Ajustar posición para que estén dentro del carrusel */
         }
         /* Estilos para los puntos de navegación */
         .owl-dots {
