@@ -44,13 +44,21 @@
             transition: transform 0.3s ease;
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
-star e    .owl-carousel {
+        .owl-carousel {
             margin: 20px auto; /* Center the carousel */
             padding: 20px;
             background-color: #e8f5e9; /* Light green background */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 500px; /* Further reduced width */
+        }
+        /* Estilos específicos para el menú en la galería */
+        .navbar.navbar-dark.bg-dark {
+            background-color: white !important;
+        }
+        .navbar.navbar-dark.bg-dark .navbar-brand,
+        .navbar.navbar-dark.bg-dark .nav-link {
+            color: black !important;
         }
     </style>
     <div class="owl-carousel owl-theme">
