@@ -1,5 +1,4 @@
-<?php include 'app/views/partials/header.php'; ?>
-
+<php include_once __DIR__ . '/../partials/header.php' ?>
 <div class="container">
     <h1>Galería de Imágenes</h1>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -89,4 +88,4 @@ star e    .owl-carousel {
         });
     });
 </script>
-<?php include 'app/views/partials/footer.php'; ?>
+<?php include_once __DIR__ . '/../partials/footer.php' ?>
