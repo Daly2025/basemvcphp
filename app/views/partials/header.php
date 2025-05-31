@@ -10,29 +10,29 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">BaseMVC</a>
+            <a class="navbar-brand text-dark" href="/">BaseMVC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="<?php echo base_url(); ?>">Inicio</a>
+                        <a class="nav-link text-dark" href="<?php echo base_url(); ?>">Inicio</a>
                     </li>
                     <?php if (isset($_SESSION['username'])): ?>
                         <li class="nav-item">
-                            <span class="nav-link text-light">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                            <span class="nav-link text-dark">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/logout">Cerrar sesión</a>
+                            <a class="nav-link text-dark" href="<?php echo base_url(); ?>auth/logout">Cerrar sesión</a>
                         </li>
                     <?php else: ?>
 
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/login">Iniciar sesión</a>
+                            <a class="nav-link text-dark" href="<?php echo base_url(); ?>auth/login">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="<?php echo base_url(); ?>auth/register">Registrarse</a>
+                            <a class="nav-link text-dark" href="<?php echo base_url(); ?>auth/register">Registrarse</a>
                         </li>
                     <?php endif; ?>
                 </ul>
