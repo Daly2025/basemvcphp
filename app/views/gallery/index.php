@@ -28,7 +28,7 @@
         .owl-carousel .item img {
             display: block;
             width: 100%;
-            height: 300px; /* Adjust as needed */
+            height: 300px; /* Altura base para las imágenes */
             object-fit: cover;
             margin: 0 auto;
             border: 5px solid white; /* White border */
@@ -36,21 +36,65 @@
             border-radius: 5px;
         }
         .owl-carousel .owl-stage-outer {
-            padding-top: 20px; /* Space for the highlighted item */
+            padding-top: 20px; /* Espacio para el item destacado */
             padding-bottom: 20px;
         }
         .owl-carousel .owl-item.active.center img {
-            transform: scale(1.1); /* Highlight effect */
-            transition: transform 0.3s ease;
+            transform: scale(1.2); /* Efecto de zoom para el item central */
+            height: 350px; /* Mayor altura para el item central */
+            transition: transform 0.3s ease, height 0.3s ease;
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
         .owl-carousel {
-            margin: 20px auto; /* Center the carousel */
+            margin: 20px auto; /* Centrar el carrusel */
             padding: 20px;
-            background-color: #e8f5e9; /* Light green background */
+            background-color: #e8f5e9; /* Fondo verde claro */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 500px; /* Further reduced width */
+            max-width: 900px; /* Ancho mayor para mostrar más imágenes */
+        }
+        /* Estilos para las flechas de navegación */
+        .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7) !important;
+            border: none !important;
+            font-size: 2em !important;
+            padding: 0 15px !important;
+            height: 50px;
+            line-height: 50px;
+            color: #333 !important;
+            border-radius: 50% !important;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .owl-nav button:hover {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        .owl-nav .owl-prev {
+            left: -30px; /* Ajustar posición */
+        }
+        .owl-nav .owl-next {
+            right: -30px; /* Ajustar posición */
+        }
+        /* Estilos para los puntos de navegación */
+        .owl-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .owl-dots .owl-dot span {
+            width: 12px;
+            height: 12px;
+            margin: 5px 7px;
+            background: #D6D6D6; /* Color de los puntos inactivos */
+            display: block;
+            -webkit-backface-visibility: visible;
+            transition: opacity .2s ease;
+            border-radius: 30px;
+        }
+        .owl-dots .owl-dot.active span {
+            background: #869791; /* Color de los puntos activos */
         }
         /* Estilos específicos para el menú en la galería */
         .navbar.navbar-dark.bg-dark {
@@ -81,16 +125,17 @@
             loop:true,
             margin:10,
             nav:true,
-            center:true,
+            dots:true, /* Asegurarse de que los puntos estén habilitados */
+            center:true, /* Centrar el item activo */
             responsive:{
                 0:{
                     items:1
                 },
                 600:{
-                    items:3
+                    items:3 /* Mostrar 3 items en pantallas medianas */
                 },
                 1000:{
-                    items:5
+                    items:5 /* Mostrar 5 items en pantallas grandes */
                 }
             }
         });
