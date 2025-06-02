@@ -49,6 +49,13 @@
                                         <a href="<?= base_url() ?>seed-exchange/delete/<?= $exchange['id'] ?>" class="btn btn-outline-danger btn-sm mt-1" onclick="return confirm('¿Estás seguro de que quieres eliminar este intercambio?');"><i class="fa-solid fa-trash"></i> Eliminar</a>
                                     <?php endif; ?>
                                 </td>
+                                <td>
+                                    <?php if (!empty($exchange['image'])): ?>
+                                        <img src="<?= base_url() . $exchange['image'] ?>" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                                    <?php else: ?>
+                                        No image
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
