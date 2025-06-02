@@ -8,7 +8,7 @@
             <?php endif; ?>
             <div class="mb-2 text-muted">Publicado el <?= htmlspecialchars($exchange['created_at']) ?> por usuario #<?= htmlspecialchars($exchange['user_id']) ?></div>
         <?php else: ?>
-            <div class="alert alert-warning">No se encontró el intercambio de semillas.</div>
+            <div class="alert alert-warning">.</div>
         <?php endif; ?>
         <hr>
         <h4 class="text-success mb-3"><i class="fa-solid fa-comments me-2"></i>Comentarios</h4>

@@ -25,9 +25,15 @@ class SeedExchangeController extends Controller {
                 $uploadDir = __DIR__ . '/../../assets/img/';
                 $filename = uniqid() . '_' . basename($_FILES['image']['name']);
                 $targetFile = $uploadDir . $filename;
+                error_log('Attempting to upload file: ' . $filename);
+                error_log('Target directory: ' . $uploadDir);
+                error_log('$_FILES["image"] details: ' . print_r($_FILES['image'], true));
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                     $image = 'assets/img/' . $filename;
+                    error_log('File uploaded successfully: ' . $image);
                 } else {
+                    $lastError = error_get_last();
+                    error_log('Failed to move uploaded file. Error: ' . ($lastError ? $lastError['message'] : 'Unknown error'));
                     $exchange['title'] = $title;
                     $exchange['description'] = $description;
                     $this->view('edit', ['exchange' => $exchange, 'error' => 'Error al subir la imagen.']);
@@ -78,9 +84,15 @@ class SeedExchangeController extends Controller {
                 $uploadDir = __DIR__ . '/../../assets/img/';
                 $filename = uniqid() . '_' . basename($_FILES['image']['name']);
                 $targetFile = $uploadDir . $filename;
+                error_log('Attempting to upload file (edit): ' . $filename);
+                error_log('Target directory (edit): ' . $uploadDir);
+                error_log('$_FILES["image"] details (edit): ' . print_r($_FILES['image'], true));
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                     $image = 'assets/img/' . $filename;
+                    error_log('File uploaded successfully (edit): ' . $image);
                 } else {
+                    $lastError = error_get_last();
+                    error_log('Failed to move uploaded file (edit). Error: ' . ($lastError ? $lastError['message'] : 'Unknown error'));
                     $exchange['title'] = $title;
                     $exchange['description'] = $description;
                     $this->view('edit', ['exchange' => $exchange, 'error' => 'Error al subir la imagen.']);

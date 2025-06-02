@@ -30,6 +30,7 @@
                             <th>Usuario</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
+                            <th>imagen</th>
                         </tr>
                     </thead>
                     <tbody>
